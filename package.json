@@ -6,7 +6,7 @@
     "scripts": {
         "start": "ts-node src/main.ts"
     },
-    "keywords": [],
+    "keywords": ["crawler", "gogoanime", "gogoanime crawler"],
     "author": "",
     "license": "ISC",
     "dependencies": {
