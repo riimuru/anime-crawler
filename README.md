@@ -32,7 +32,7 @@ If you want to populate your anime database, but don't want to keep it up-to-dat
 ```bash
 yarn populate # or npm run populate
 ```
-if you want add new releases, but don't want to populate your anime database, you can use the following command:
+if you want to add new releases, but don't want to populate your anime database, you can use the following command:
 ```bash
 yarn refresh # or npm run refresh
 ```

@@ -6,7 +6,7 @@
     "scripts": {
         "populate": "ts-node src/main.ts",
         "refresh": "ts-node src/refresh.ts",
-        "crawl": "npm start && npm run refresh"
+        "crawl": "npm run populate && npm run refresh"
     },
     "keywords": ["crawler", "gogoanime", "gogoanime crawler"],
     "author": "",
