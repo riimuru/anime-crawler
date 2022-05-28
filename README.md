@@ -5,6 +5,10 @@
 ## Guide
  - [Getting Started](#getting-started)
  - [How to use](#how-to-use)
+   - [Populate and Refresh](#populate-and-refresh)
+   - [Populate *Only*](#populate-only)
+   - [Refresh *Only*](#refresh-only)
+   - [Notes](#notes)
 
 ### Getting Started
 
@@ -21,21 +25,39 @@ MONGO_URI=     # Mongodb URI
 ```
 Check out [How to create a new mongodb cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) to get the mongodb URI and the database name.
 
+install ts-node:
+```bash
+yarn global add ts-node # or npm install -g ts-node
+```
+
 ### How to use
+
+- [Populate and Refresh](#populate-and-refresh)
+- [Populate *Only*](#populate-only)
+- [Refresh *Only*](#refresh-only)
+- [Notes](#notes)
+
+#### Populate and Refresh
+
 If you want to populate your anime database, and keep it up-to-date with new releases, you can use the following command:
 
 ```bash
 yarn crawl # or npm run crawl
 ```
+
+#### Populate Only
 If you want to populate your anime database, but don't want to keep it up-to-date with new releases, you can use the following command:
 
 ```bash
 yarn populate # or npm run populate
 ```
+#### Refresh Only
 if you want to add new releases, but don't want to populate your anime database, you can use the following command:
 ```bash
 yarn refresh # or npm run refresh
 ```
+
+#### Notes
 The crawler will validate the environment variables and the database connection. If everything is fine, it will start crawling.
 
 if everything is fine, your terminal will show the following:
