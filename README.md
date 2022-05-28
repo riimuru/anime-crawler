@@ -8,7 +8,7 @@
    - [Populate and Refresh](#populate-and-refresh)
    - [Populate *Only*](#populate-only)
    - [Refresh *Only*](#refresh-only)
-   - [Notes](#notes)
+- [Notes](#notes)
 
 ### Getting Started
 
@@ -36,7 +36,6 @@ yarn global add typescript # or npm install -g typescript
 - [Populate and Refresh](#populate-and-refresh)
 - [Populate *Only*](#populate-only)
 - [Refresh *Only*](#refresh-only)
-- [Notes](#notes)
 
 #### Populate and Refresh
 
@@ -58,7 +57,7 @@ if you want to add new releases, but don't want to populate your anime database,
 yarn refresh # or npm run refresh
 ```
 
-#### Notes
+### Notes
 The crawler will validate the environment variables and the database connection. If everything is fine, it will start crawling.
 
 if everything is fine, your terminal will show the following:
