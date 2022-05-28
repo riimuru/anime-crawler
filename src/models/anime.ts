@@ -34,3 +34,9 @@ export enum SubOrDub {
   SUB = "sub",
   DUB = "dub",
 }
+
+export enum Types {
+  SUB = 1,
+  DUB = 2,
+  CHINESE = 3,
+}

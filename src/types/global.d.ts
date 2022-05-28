@@ -1,3 +1,5 @@
+import { MongoClient } from "mongodb";
+
 declare global {
   var config: {
     animesAdded: number;

@@ -1,3 +1,3 @@
-import { GogoEpisode, Gogoanime, GogoanimeRecent, SubOrDub } from "./anime";
+import { GogoEpisode, Gogoanime, GogoanimeRecent, SubOrDub, Types } from "./anime";
 
-export { GogoEpisode, Gogoanime, GogoanimeRecent, SubOrDub };
+export { GogoEpisode, Gogoanime, GogoanimeRecent, SubOrDub, Types };

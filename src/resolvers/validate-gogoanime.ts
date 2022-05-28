@@ -31,3 +31,30 @@ export const validateGogoanime = async (
     throw new Error((err as Error).message);
   }
 };
+
+export const validateGogoanimeV2 = async (
+  gogoanime: Gogoanime,
+  gogoanimeColl: Collection<Gogoanime>
+): Promise<boolean> => {
+  try {
+    if (!gogoanime) return false;
+
+    const anime = await gogoanimeColl.findOne({ id: gogoanime.id }, { projection: { _id: 1 } });
+    let gogoanimeDbId = null;
+
+    if (anime) {
+      logger.info(`Updating [${gogoanime.title} - ${gogoanime.subOrDub}]...`);
+      gogoanimeDbId = anime._id;
+      await gogoanimeColl.updateOne({ _id: gogoanimeDbId }, { $set: { ...gogoanime } });
+      global.config.animesUpdated++;
+    } else {
+      logger.info(`Inserting [${gogoanime.title} - ${gogoanime.subOrDub}]...`);
+      gogoanimeDbId = (await gogoanimeColl.insertOne({ ...gogoanime })).insertedId;
+      global.config.animesAdded++;
+    }
+
+    return true;
+  } catch (err) {
+    throw new Error((err as Error).message);
+  }
+};

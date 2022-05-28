@@ -1,4 +1,4 @@
-import { load } from "cheerio";
+import { load, CheerioAPI } from "cheerio";
 import axios from "axios";
 
 import { Gogoanime, GogoEpisode, SubOrDub } from "../models";
@@ -6,6 +6,7 @@ import { Gogoanime, GogoEpisode, SubOrDub } from "../models";
 export const BASE_URL = "https://gogoanime.gg/";
 const ajax_url = "https://ajax.gogo-load.com/";
 const list_episodes_url = `${ajax_url}ajax/load-list-episode`;
+export const recent_release_url = `${ajax_url}ajax/page-recent-release.html`;
 
 /**
  * @param {string} id anime id.
@@ -82,6 +83,29 @@ export const scrapeAnimeDetails = async (id: string): Promise<Gogoanime | undefi
       episodes: epList,
     };
   } catch (err) {
-    throw err;
+    throw (err as Error).message;
+  }
+};
+
+export const scrapeRecentRelease = async ($: CheerioAPI): Promise<Gogoanime[] | undefined> => {
+  const list: Gogoanime[] = [];
+  try {
+    const items = $("div.last_episodes.loaddub > ul").children();
+    for (const anime of items) {
+      let id = $(anime).find("a").attr("href")?.split("/")[1].split("-episode")[0]!;
+      if (id == "tate-no-yuusha-no-nariagari-season-2") {
+        id = "tate-no-yuusha-no-nariagari-2nd-season";
+      }
+      const animeDetails = await scrapeAnimeDetails(id);
+
+      if (animeDetails) {
+        list.push(animeDetails);
+      }
+    }
+
+    return list;
+  } catch (err) {
+    console.log(err);
+    return [];
   }
 };

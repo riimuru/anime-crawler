@@ -21,14 +21,14 @@ global.config = {
 
 const validateEnviromentVariables = () => {
   logger.info("Checking enviroment variables...", colors.blue);
-  if (!process.env.MONGO_URI) {
+
+  if (!process.env.MONGO_URI || !process.env.DB_NAME) {
     throw new Error(
       `${colors.red}Missing environment variables. Please check the README.md file for more information.${colors.reset}`
     );
   }
 
   const mongoOptions: MongoClientOptions = {
-    connectTimeoutMS: 5000,
     keepAlive: true,
   };
 
@@ -38,12 +38,13 @@ const validateEnviromentVariables = () => {
 };
 
 const startCrawler = async () => {
-  logger.info("\nStarting crawler...", colors.blue);
+  logger.info(`\nStarting crawler... PID: ${process.pid}`, colors.blue);
 
   const gogoanimeColl = getCollection<Gogoanime>(mongoClient, process.env.DB_NAME!, "gogoanime")!;
 
   try {
     for (const suffix of animelistSuffixes) {
+      // should be 1 always. unless you know what you're doing.
       let page = 1;
 
       await handlePages(suffix, page, gogoanimeColl);
@@ -52,6 +53,8 @@ const startCrawler = async () => {
     }
 
     logger.info("\nFinished crawling.", colors.green);
+    await mongoClient.close();
+    process.exit(0);
   } catch (err) {
     throw new Error(`${(err as Error).message}`);
   }

@@ -4,7 +4,9 @@
     "description": "Crawler for gogoanime. Populate your database using gogoanime",
     "main": "src/main.ts",
     "scripts": {
-        "start": "ts-node src/main.ts"
+        "populate": "ts-node src/main.ts",
+        "refresh": "ts-node src/refresh.ts",
+        "crawl": "npm start && npm run refresh"
     },
     "keywords": ["crawler", "gogoanime", "gogoanime crawler"],
     "author": "",
