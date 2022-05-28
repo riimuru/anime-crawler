@@ -25,9 +25,10 @@ MONGO_URI=     # Mongodb URI
 ```
 Check out [How to create a new mongodb cluster](https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/) to get the mongodb URI and the database name.
 
-install ts-node:
+install ts-node and typescript in your machine:
 ```bash
 yarn global add ts-node # or npm install -g ts-node
+yarn global add typescript # or npm install -g typescript
 ```
 
 ### How to use
