@@ -37,7 +37,9 @@ export const scrapeAnimeDetails = async (id: string): Promise<Gogoanime | undefi
     const otherName = $("div.anime_info_body_bg > p:nth-child(9)")
       .text()
       .replace("Other name: ", "")
-      .replace(/;/g, ",");
+      .replace(/;/g, ",")
+      .split(",")
+      .map((name) => name.trim());
 
     $("div.anime_info_body_bg > p:nth-child(6) > a").each((i, elem) => {
       genres.push($(elem).attr("title")!.trim());
@@ -109,3 +111,8 @@ export const scrapeRecentRelease = async ($: CheerioAPI): Promise<Gogoanime[] | 
     return [];
   }
 };
+
+(async () => {
+  const res = await scrapeAnimeDetails("tantei-wa-mou-shindeiru");
+  console.log(res);
+})();
