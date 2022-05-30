@@ -25,7 +25,7 @@ const startRefresh = async () => {
 
   try {
     for (const type of [Types.SUB, Types.DUB, Types.CHINESE]) {
-      let page = 3;
+      let page = 1;
 
       await handlePages(type, page);
 
