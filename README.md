@@ -1,6 +1,6 @@
 # Gogoanime Crawler
 
-##### [Gogoanime Crawler](#gogoanime-crawler) can help you populate your anime database using [gogoanime](https://gogoanime.gg/) data in just few hours. It can also help you to keep your anime database up-to-date with new releases.
+##### [Gogoanime Crawler](#gogoanime-crawler) can help you populate your anime *mongodb database* using [gogoanime](https://gogoanime.gg/) data in just few hours. It can also help you to keep your anime database up-to-date with new releases.
 
 ## Guide
  - [Getting Started](#getting-started)
