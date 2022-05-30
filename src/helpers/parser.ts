@@ -111,8 +111,3 @@ export const scrapeRecentRelease = async ($: CheerioAPI): Promise<Gogoanime[] | 
     return [];
   }
 };
-
-(async () => {
-  const res = await scrapeAnimeDetails("tantei-wa-mou-shindeiru");
-  console.log(res);
-})();
